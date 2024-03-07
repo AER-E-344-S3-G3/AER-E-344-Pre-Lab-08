@@ -1,7 +1,35 @@
 \chapter{Answers}
 \label{cp:answers}
 \section{Question 1}
-\begin{importantbox}
-    This is the question.
-\end{importantbox}
-\noindent{}This is the answer.
+
+For a \qty{10}{\hertz} motor frequency, the velocity is \qty{12.8}{\meter\per\second}. Per the lab manual, the transition occurs at a Reynolds number of \num{1e5}. Using the equation for Reynolds number, we can find the distance from the leading edge of a theoretical flat plate at which the turbulent transition occurs:
+
+\begin{align}
+    Re &= \frac{\rho V_\infty^2 L}{\mu} \\
+    x &= \frac{Re\cdot\mu}{\rho V_\infty^2} \nonumber \\
+    x &= \frac{\num{1e5}\cdot\qty{1.8e-5}{\newton\second\per\meter\squared}}{\qty{1.225}{\kilo\gram\per\meter\cubed}\cdot\qty{12.8}{\meter\per\second}} \nonumber \\
+    x &= \qty{11.5}{\centi\meter} \nonumber \\
+    x &= \qty{4.52}{inch} \nonumber
+\end{align}
+
+Once we have the transition point, we can use the two boundary layer equations to determine the thickness of the boundary layer as a function of the distance from the leading edge of the theoretical flat plate:
+
+\begin{align}
+    \frac{\delta}{x} &= \frac{5.0}{\sqrt{Re_x}}\quad\text{for laminar flow} \\
+    \frac{\delta}{x} &= \frac{0.37}{Re_x^{\frac{1}{5}}}\quad\text{for turbulent flow}
+\end{align}
+
+Using the script attached to this pre-lab, we generated a graph of boundary layer thicknesses (see \autoref{fig:boundary_layer_graph}).
+
+\begin{figure}[htpb]
+    \centering
+    \includesvg[width=0.75\linewidth]{Code/boundary_layer_thickness.svg}
+    \caption[A plot of the boundary layer thickness as a function of the distance from the leading edge of a theoretical flat plate.]{A plot of the boundary layer thickness, $\delta$, as a function of the distance from the leading edge of a theoretical flat plate, $x$.}
+    \label{fig:boundary_layer_graph}
+\end{figure}
+
+We can use \autoref{fig:boundary_layer_graph} to determine the spacing of the measurements for a given distance from the leading edge of the airfoil. For example, if the probe is positioned \qty{30}{inch} from the leading edge of the airfoil, the boundary layer will be approximately \qty{0.763}{inch} or \qty{19.4}{\milli\meter}. For this boundary layer width, we should take measurements every \qtyrange{2}{3}{\milli\meter}—starting approximately \qty{10}{\milli\meter} below the airfoil and ending approximately \qty{10}{\milli\meter} above the airfoil. This scale will vary depending on the $x$ distance of the probe.
+
+\section{PreLab08.m} \label{sec:code}
+
+\inputminted{matlab}{Code/PreLab08.m}\label{listing:prelab_script}
